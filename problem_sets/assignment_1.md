@@ -1,8 +1,4 @@
----
-title: "Assignment 1"
-format: gfm
-editor: visual
----
+
 
 # Assignment 1
 
