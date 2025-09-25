@@ -12,12 +12,14 @@ Please use the following table to grade the student's assignment:
 
 | Assignment# | Fully completed | Partially completed | Not completed |
 |:-----------:|:---------------:|:-------------------:|:-------------:|
-|      1      |                 |                     |               |
-|      2      |                 |                     |               |
-|      3      |                 |                     |               |
+|      1      |        X         |                     |               |
+|      2      |                 |                     |         X      |
+|      3      |        X         |                     |               |
 |      4      |                 |                     |               |
 |      5      |                 |                     |               |
 |      6      |                 |                     |               |
 |      7      |                 |                     |               |
 |      8      |                 |                     |               |
 |      9      |                 |                     |               |
+
+Assignment 3: https://gevergreen.github.io/assignment-3-gme37/
