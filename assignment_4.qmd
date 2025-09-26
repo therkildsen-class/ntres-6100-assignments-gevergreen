@@ -179,7 +179,7 @@ For the following exercise, **transform the data as instructed**. Try to use `ti
 
 ```         
 Theoph |>
-  select(contains("t")) |>
+  select(contains("t", ignore.case = FALSE)) |>
   head(6) |>
   kable()
 ```
@@ -244,12 +244,13 @@ Show data for the 6 subjects with the smallest sum of `Dose` as below. **Do not 
 Theoph |>
   group_by(Subject) |>
   summarise(
-    Mean_Conc = mean(conc),
-    Total_Dose = sum(Dose),
+    mean_conc = mean(conc),
+    sum_dose = sum(Dose),
     .groups = "drop"
   ) |>
-  arrange(Total_Dose)
-kable(head(Theoph))
+  arrange(sum_dose) |>
+  head(6) |>
+  kable()
 ```
 
 \
