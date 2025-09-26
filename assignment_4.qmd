@@ -2,6 +2,10 @@
 title: "Assignment 4"
 format: gfm
 editor: visual
+echo: true
+fig-show: always
+warning: false
+message: false 
 ---
 
 ## 
