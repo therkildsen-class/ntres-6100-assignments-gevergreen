@@ -81,77 +81,113 @@ economist_data |>
 
 #### **1.4 Color the points in the previous plot according to the `Region` variable, and set the size of points to 2.**
 
-    economist_data |>
-      ggplot() +
-      geom_point(mapping = aes(x = CPI, y = HDI, color = Region,), size = 2)
+``` r
+economist_data |>
+  ggplot() +
+  geom_point(mapping = aes(x = CPI, y = HDI, color = Region,), size = 2)
+```
+
+![](assignment_4_files/figure-commonmark/unnamed-chunk-6-1.png)
 
   
 
 #### **1.5 Set the size of the points proportional to `HDI.Rank`**
 
-    economist_data |>
-      ggplot() +
-      geom_point(mapping = aes(x = CPI, y = HDI, color = Region, size = HDI.Rank))
+``` r
+economist_data |>
+  ggplot() +
+  geom_point(mapping = aes(x = CPI, y = HDI, color = Region, size = HDI.Rank))
+```
+
+![](assignment_4_files/figure-commonmark/unnamed-chunk-7-1.png)
 
   
 
 #### **1.6 Fit a smoothing line to all the data points in the scatter plot from Excercise 1.4**
 
-    economist_data |>
-      ggplot() +
-      geom_point(mapping = aes(x = CPI, y = HDI, color = Region,), size = 2) + geom_smooth(mapping = aes(x = CPI, y = HDI))
+``` r
+economist_data |>
+  ggplot() +
+  geom_point(mapping = aes(x = CPI, y = HDI, color = Region,), size = 2) + geom_smooth(mapping = aes(x = CPI, y = HDI))
+```
+
+![](assignment_4_files/figure-commonmark/unnamed-chunk-8-1.png)
 
   
 
 #### **1.7 Fit a separate straight line for each region instead, and turn off the confidence interval.**
 
-    economist_data |>
-      ggplot() +
-      geom_point(mapping = aes(x = CPI, y = HDI, color = Region,), size = 2) + geom_smooth(mapping = aes(x = CPI, y = HDI, color = Region), 
-      method = "lm", se = FALSE)
+``` r
+economist_data |>
+  ggplot() +
+  geom_point(mapping = aes(x = CPI, y = HDI, color = Region,), size = 2) + geom_smooth(mapping = aes(x = CPI, y = HDI, color = Region), 
+  method = "lm", se = FALSE)
+```
+
+![](assignment_4_files/figure-commonmark/unnamed-chunk-9-1.png)
 
   
 
 #### **1.8 Building on top of the previous plot, show each `Region` in a different facet.**
 
-    economist_data |>
-      ggplot() +
-      geom_point(mapping = aes(x = CPI, y = HDI, color = Region,), size = 2) + geom_smooth(mapping = aes(x = CPI, y = HDI, color = Region), 
-      method = "lm", se = FALSE) + facet_wrap (~Region)
+``` r
+economist_data |>
+  ggplot() +
+  geom_point(mapping = aes(x = CPI, y = HDI, color = Region,), size = 2) + geom_smooth(mapping = aes(x = CPI, y = HDI, color = Region), 
+  method = "lm", se = FALSE) + facet_wrap (~Region)
+```
+
+![](assignment_4_files/figure-commonmark/unnamed-chunk-10-1.png)
 
   
 
 #### **1.9 Show the distribution of `HDI` in each region using density plot. Set the transparency to 0.5**
 
-    economist_data |>
-      ggplot(aes(x = HDI, fill = Region)) +
-      geom_density(alpha = 0.5)
+``` r
+economist_data |>
+  ggplot(aes(x = HDI, fill = Region)) +
+  geom_density(alpha = 0.5)
+```
+
+![](assignment_4_files/figure-commonmark/unnamed-chunk-11-1.png)
 
   
 
 #### **1.10 Show the distribution of `HDI` in each region using histogram and facetting.**
 
-    economist_data |>
-      ggplot(aes(x = HDI, fill = Region)) +
-      geom_histogram() + facet_wrap (~Region)
+``` r
+economist_data |>
+  ggplot(aes(x = HDI, fill = Region)) +
+  geom_histogram() + facet_wrap (~Region)
+```
+
+![](assignment_4_files/figure-commonmark/unnamed-chunk-12-1.png)
 
   
 
 #### **1.11 Show the distribution of `HDI` in each region using a box plot. Set the transparency of these boxes to 0.5 and do not show outlier points with the box plot. Instead, show all data points for each country in the same plot. (Hint: `geom_jitter()` or `position_jitter()` might be useful.)**
 
-    economist_data |>
-      ggplot(aes(x = Region, y = HDI, fill = Region)) +
-      geom_boxplot(alpha = 0.5, outlier.shape = NA) +
-      geom_jitter(aes(color = Region),
-                  width = 0.2, size = 1.5, alpha = 0.7)
+``` r
+economist_data |>
+  ggplot(aes(x = Region, y = HDI, fill = Region)) +
+  geom_boxplot(alpha = 0.5, outlier.shape = NA) +
+  geom_jitter(aes(color = Region),
+              width = 0.2, size = 1.5, alpha = 0.7)
+```
+
+![](assignment_4_files/figure-commonmark/unnamed-chunk-13-1.png)
 
   
 
 #### **1.12 Show the count of countries in each region using a bar plot.**
 
-    economist_data |>
-      ggplot(aes(x = Region)) +
-      geom_bar()
+``` r
+economist_data |>
+  ggplot(aes(x = Region)) +
+  geom_bar()
+```
+
+![](assignment_4_files/figure-commonmark/unnamed-chunk-14-1.png)
 
   
 
@@ -177,7 +213,18 @@ hours. You can learn more about this dataset by running `?Theoph`
 
 Have a look at the data structure
 
-    kable(head(Theoph))
+``` r
+kable(head(Theoph))
+```
+
+| Subject |   Wt | Dose | Time |  conc |
+|:--------|-----:|-----:|-----:|------:|
+| 1       | 79.6 | 4.02 | 0.00 |  0.74 |
+| 1       | 79.6 | 4.02 | 0.25 |  2.84 |
+| 1       | 79.6 | 4.02 | 0.57 |  6.57 |
+| 1       | 79.6 | 4.02 | 1.12 | 10.50 |
+| 1       | 79.6 | 4.02 | 2.02 |  9.66 |
+| 1       | 79.6 | 4.02 | 3.82 |  8.58 |
 
   
 
@@ -188,52 +235,106 @@ through RMarkdown **using the kable() function**, as shown above.
 
 #### **2.1 Select columns that contain a lower case “t” in the `Theoph` dataset. Do not manually list all the columns to include.**
 
-    Theoph |>
-      select(contains("t", ignore.case = FALSE)) |>
-      head(6) |>
-      kable()
+``` r
+Theoph |>
+  select(contains("t", ignore.case = FALSE)) |>
+  head(6) |>
+  kable()
+```
+
+| Subject |   Wt |
+|:--------|-----:|
+| 1       | 79.6 |
+| 1       | 79.6 |
+| 1       | 79.6 |
+| 1       | 79.6 |
+| 1       | 79.6 |
+| 1       | 79.6 |
 
   
 
 #### **2.2 Rename the `Wt` column to `Weight` and `conc` column to `Concentration` in the `Theoph` dataset.**
 
+``` r
+theoph_1 <- Theoph |>
+  rename(
+    Weight = Wt,
+    Concentration = conc
+  )
+kable(head(theoph_1))
+```
 
-    theoph_1 <- Theoph |>
-      rename(
-        Weight = Wt,
-        Concentration = conc
-      )
-    kable(head(theoph_1))
+| Subject | Weight | Dose | Time | Concentration |
+|:--------|-------:|-----:|-----:|--------------:|
+| 1       |   79.6 | 4.02 | 0.00 |          0.74 |
+| 1       |   79.6 | 4.02 | 0.25 |          2.84 |
+| 1       |   79.6 | 4.02 | 0.57 |          6.57 |
+| 1       |   79.6 | 4.02 | 1.12 |         10.50 |
+| 1       |   79.6 | 4.02 | 2.02 |          9.66 |
+| 1       |   79.6 | 4.02 | 3.82 |          8.58 |
 
   
 
 #### **2.3 Extract the `Dose` greater than 4.5 and `Time` greater than the mean `Time`.**
 
-    theoph_filter <- Theoph |>
-      filter(
-        Dose > 4.5,
-        Time > mean(Time)
-      )
-    kable(head(theoph_filter))
+``` r
+theoph_filter <- Theoph |>
+  filter(
+    Dose > 4.5,
+    Time > mean(Time)
+  )
+kable(head(theoph_filter))
+```
+
+| Subject |   Wt | Dose |  Time | conc |
+|:--------|-----:|-----:|------:|-----:|
+| 3       | 70.5 | 4.53 |  7.07 | 5.30 |
+| 3       | 70.5 | 4.53 |  9.00 | 4.90 |
+| 3       | 70.5 | 4.53 | 12.15 | 3.70 |
+| 3       | 70.5 | 4.53 | 24.17 | 1.05 |
+| 5       | 54.6 | 5.86 |  7.02 | 7.09 |
+| 5       | 54.6 | 5.86 |  9.10 | 5.90 |
 
   
 
 #### **2.4 Sort the `Theoph` dataset by `Wt` from smallest to largest and secondarily by Time from largest to smallest.**
 
-    theoph_sort <- Theoph |>
-      arrange(Wt, desc(Time))
-    kable(head(theoph_sort))
+``` r
+theoph_sort <- Theoph |>
+  arrange(Wt, desc(Time))
+kable(head(theoph_sort))
+```
+
+| Subject |   Wt | Dose |  Time | conc |
+|:--------|-----:|-----:|------:|-----:|
+| 5       | 54.6 | 5.86 | 24.35 | 1.57 |
+| 5       | 54.6 | 5.86 | 12.00 | 4.37 |
+| 5       | 54.6 | 5.86 |  9.10 | 5.90 |
+| 5       | 54.6 | 5.86 |  7.02 | 7.09 |
+| 5       | 54.6 | 5.86 |  5.02 | 7.56 |
+| 5       | 54.6 | 5.86 |  3.50 | 8.74 |
 
   
 
 #### **2.5 Create a new column called `Quantity` that equals to `Wt` x `Dose` in the `Theoph` dataset. This will tell you the absolute quantity of drug administered to the subject (in mg). Replace the `Dose` variable with `Quantity`.**
 
-    theoph_2 <- Theoph |>
-      mutate(
-        Quantity = Wt * Dose,
-      ) |>
-      select(-Dose) 
-    kable(head(theoph_2))
+``` r
+theoph_2 <- Theoph |>
+  mutate(
+    Quantity = Wt * Dose,
+  ) |>
+  select(-Dose) 
+kable(head(theoph_2))
+```
+
+| Subject |   Wt | Time |  conc | Quantity |
+|:--------|-----:|-----:|------:|---------:|
+| 1       | 79.6 | 0.00 |  0.74 |  319.992 |
+| 1       | 79.6 | 0.25 |  2.84 |  319.992 |
+| 1       | 79.6 | 0.57 |  6.57 |  319.992 |
+| 1       | 79.6 | 1.12 | 10.50 |  319.992 |
+| 1       | 79.6 | 2.02 |  9.66 |  319.992 |
+| 1       | 79.6 | 3.82 |  8.58 |  319.992 |
 
   
 
@@ -243,16 +344,27 @@ Show data for the 6 subjects with the smallest sum of `Dose` as below.
 **Do not define new intermediate objects for this exercise; use pipes to
 chain together functions.**
 
-    Theoph |>
-      group_by(Subject) |>
-      summarise(
-        mean_conc = mean(conc),
-        sum_dose = sum(Dose),
-        .groups = "drop"
-      ) |>
-      arrange(sum_dose) |>
-      head(6) |>
-      kable()
+``` r
+Theoph |>
+  group_by(Subject) |>
+  summarise(
+    mean_conc = mean(conc),
+    sum_dose = sum(Dose),
+    .groups = "drop"
+  ) |>
+  arrange(sum_dose) |>
+  head(6) |>
+  kable()
+```
+
+| Subject | mean_conc | sum_dose |
+|:--------|----------:|---------:|
+| 9       |  4.893636 |    34.10 |
+| 6       |  3.525454 |    44.00 |
+| 1       |  6.439091 |    44.22 |
+| 2       |  4.823636 |    48.40 |
+| 4       |  4.940000 |    48.40 |
+| 8       |  4.271818 |    49.83 |
 
   
 
@@ -264,7 +376,18 @@ was produced from US economic time series data available from
 unemployed persons (`unemploy`), among other variables, in the US from
 1967 to 2015.
 
-    head(economics) %>% kable()
+``` r
+head(economics) %>% kable()
+```
+
+| date       |   pce |    pop | psavert | uempmed | unemploy |
+|:-----------|------:|-------:|--------:|--------:|---------:|
+| 1967-07-01 | 506.7 | 198712 |    12.6 |     4.5 |     2944 |
+| 1967-08-01 | 509.8 | 198911 |    12.6 |     4.7 |     2945 |
+| 1967-09-01 | 515.6 | 199113 |    11.9 |     4.6 |     2958 |
+| 1967-10-01 | 512.2 | 199311 |    12.9 |     4.9 |     3143 |
+| 1967-11-01 | 517.4 | 199498 |    12.8 |     4.7 |     3066 |
+| 1967-12-01 | 525.1 | 199657 |    11.8 |     4.8 |     3018 |
 
 | **date**   | **pce** | **pop** | **psavert** | **uempmed** | **unemploy** |
 |------------|---------|---------|-------------|-------------|--------------|
