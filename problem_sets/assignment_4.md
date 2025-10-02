@@ -10,8 +10,10 @@
 To start, load all the required packages with the following code.
 Install them if they are not installed yet.
 
-    library(tidyverse)
-    library(knitr)
+``` r
+library(tidyverse)
+library(knitr)
+```
 
   
 
@@ -29,29 +31,51 @@ corrupted the country is perceived to be.)
 
 First, we load the data using the following code.
 
-    economist_data <- read_csv("https://raw.githubusercontent.com/nt246/NTRES-6100-data-science/master/datasets/EconomistData.csv")
+``` r
+economist_data <- read_csv("https://raw.githubusercontent.com/nt246/NTRES-6100-data-science/master/datasets/EconomistData.csv")
+```
 
   
 
 #### **1.1 Show the first few rows of `economist_data`.**
 
-    head(economist_data)
+``` r
+head(economist_data)
+```
+
+    # A tibble: 6 × 6
+       ...1 Country     HDI.Rank   HDI   CPI Region           
+      <dbl> <chr>          <dbl> <dbl> <dbl> <chr>            
+    1     1 Afghanistan      172 0.398   1.5 Asia Pacific     
+    2     2 Albania           70 0.739   3.1 East EU Cemt Asia
+    3     3 Algeria           96 0.698   2.9 MENA             
+    4     4 Angola           148 0.486   2   SSA              
+    5     5 Argentina         45 0.797   3   Americas         
+    6     6 Armenia           86 0.716   2.6 East EU Cemt Asia
 
   
 
 #### **1.2 Expore the relationship between human development index (`HDI`) and corruption perception index (`CPI`) with a scatter plot as the following.**
 
-    economist_data |>
-      ggplot() +
-      geom_point(mapping = aes(x = CPI, y = HDI))
+``` r
+economist_data |>
+  ggplot() +
+  geom_point(mapping = aes(x = CPI, y = HDI))
+```
+
+![](assignment_4_files/figure-commonmark/unnamed-chunk-4-1.png)
 
   
 
 #### **1.3 Make the color of all points in the previous plot red.**
 
-    economist_data |>
-      ggplot() +
-      geom_point(mapping = aes(x = CPI, y = HDI), color = "red")
+``` r
+economist_data |>
+  ggplot() +
+  geom_point(mapping = aes(x = CPI, y = HDI), color = "red")
+```
+
+![](assignment_4_files/figure-commonmark/unnamed-chunk-5-1.png)
 
   
 
@@ -133,7 +157,12 @@ First, we load the data using the following code.
 
 #### **1.13 You have now created a variety of different plots of the same dataset. Which of your plots do you think are the most informative? Describe briefly the major trends that you see in the data.**
 
-Answer: *Write your response here*.
+Answer: I think the plots from either 1.6 or 1.8 are most informative,
+because they show the relationship between HDI and CPI and use a line to
+show overall trends in the data. 1.6 with the smoothing line shows that
+the major trend within the data is that countries with a higher human
+development index have a higher perception of corruption. 1.8 makes it
+easier to break down this data by region.
 
   
 
